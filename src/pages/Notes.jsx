@@ -1,4 +1,4 @@
-import { Box, Button, Input, List, ListItem, Text, Textarea } from "@chakra-ui/react";
+import { Box, Button, Text, Textarea, Grid, GridItem, Image } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { client } from "lib/crud";
 
@@ -58,13 +58,15 @@ const Notes = () => {
       />
       <Button onClick={addNote} colorScheme="blue" width={['full', 'auto']} m={2}>Add Note</Button>
       {error && <Text color="red.500">{error}</Text>}
-      <List spacing={3} mt={4} border="1px" borderColor="gray.200" p={3} bg="gray.50">
+      <Grid templateColumns="repeat(3, 1fr)" gap={6} mt={4}>
         {notes.map(note => (
-          <ListItem key={note.id} p={2} borderBottom="1px" borderColor="gray.300">
-            {note.note} <Button size="sm" colorScheme="red" onClick={() => deleteNote(note.id)}>Delete</Button>
-          </ListItem>
+          <GridItem key={note.id} bg="white" boxShadow="xl" p={4} borderRadius="lg">
+            <Image src="https://via.placeholder.com/150" alt="Note Image" mb={4} />
+            <Text fontSize="lg">{note.note}</Text>
+            <Button colorScheme="red" onClick={() => deleteNote(note.id)}>Delete</Button>
+          </GridItem>
         ))}
-      </List>
+      </Grid>
     </Box>
   );
 };

@@ -1,4 +1,4 @@
-import { Box, Button, Input, List, ListItem, Text } from "@chakra-ui/react";
+import { Box, Button, Input, Text, Grid, GridItem, Image } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { client } from "lib/crud";
 
@@ -55,14 +55,16 @@ const Keys = () => {
         mb={4} p={2}
       />
       <Button onClick={addKey} colorScheme="blue" width={['full', 'auto']} m={3} p={2}>Add Key</Button>
-      <List spacing={3} mt={4} border="1px" borderColor="gray.200" p={3} bg="gray.50">
+      <Grid templateColumns="repeat(3, 1fr)" gap={6} mt={4}>
         {keys.map(keyItem => (
-          <ListItem key={keyItem.id}>
-            {keyItem.key} <Button size="sm" colorScheme="red" onClick={() => deleteKey(keyItem.id)}>Delete</Button>
-          </ListItem>
+          <GridItem key={keyItem.id} bg="white" boxShadow="xl" p={4} borderRadius="lg">
+            <Image src="https://via.placeholder.com/150" alt="Key Image" mb={4} />
+            <Text fontSize="lg">{keyItem.key}</Text>
+            <Button colorScheme="red" onClick={() => deleteKey(keyItem.id)}>Delete</Button>
+          </GridItem>
         ))}
-        {error && <Text color="red.500">{error}</Text>}
-      </List>
+      </Grid>
+      {error && <Text color="red.500">{error}</Text>}
     </Box>
   );
 };
