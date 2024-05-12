@@ -5,12 +5,17 @@ import { client } from "lib/crud";
 const Keys = () => {
   const [keys, setKeys] = useState([]);
   const [newKey, setNewKey] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchKeys = async () => {
-      const data = await client.getWithPrefix("key:");
-      if (data) {
-        setKeys(data.map(item => ({ id: item.key, key: item.value.key })));
+      try {
+        const data = await client.getWithPrefix("key:");
+        if (data) {
+          setKeys(data.map(item => ({ id: item.key, key: item.value.key })));
+        }
+      } catch (err) {
+        setError("Failed to fetch keys.");
       }
     };
     fetchKeys();
@@ -18,17 +23,25 @@ const Keys = () => {
 
   const addKey = async () => {
     const key = `key:${Date.now()}`;
-    const success = await client.set(key, { key: newKey });
-    if (success) {
-      setKeys([...keys, { id: key, key: newKey }]);
-      setNewKey("");
+    try {
+      const success = await client.set(key, { key: newKey });
+      if (success) {
+        setKeys([...keys, { id: key, key: newKey }]);
+        setNewKey("");
+      }
+    } catch (err) {
+      setError("Failed to add key.");
     }
   };
 
   const deleteKey = async (id) => {
-    const success = await client.delete(id);
-    if (success) {
-      setKeys(keys.filter(keyItem => keyItem.id !== id));
+    try {
+      const success = await client.delete(id);
+      if (success) {
+        setKeys(keys.filter(keyItem => keyItem.id !== id));
+      }
+    } catch (err) {
+      setError("Failed to delete key.");
     }
   };
 
@@ -39,15 +52,16 @@ const Keys = () => {
         placeholder="Add new Key"
         value={newKey}
         onChange={(e) => setNewKey(e.target.value)}
-        mb={2}
+        mb={4} p={2}
       />
-      <Button onClick={addKey} colorScheme="blue" width={['full', 'auto']} m={2}>Add Key</Button>
-      <List spacing={3} mt={4} border="1px" borderColor="gray.200" p={3}>
+      <Button onClick={addKey} colorScheme="blue" width={['full', 'auto']} m={3} p={2}>Add Key</Button>
+      <List spacing={3} mt={4} border="1px" borderColor="gray.200" p={3} bg="gray.50">
         {keys.map(keyItem => (
           <ListItem key={keyItem.id}>
             {keyItem.key} <Button size="sm" colorScheme="red" onClick={() => deleteKey(keyItem.id)}>Delete</Button>
           </ListItem>
         ))}
+        {error && <Text color="red.500">{error}</Text>}
       </List>
     </Box>
   );
