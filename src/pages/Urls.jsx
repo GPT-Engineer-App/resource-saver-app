@@ -33,7 +33,7 @@ const Urls = () => {
   };
 
   return (
-    <Box p={4}>
+    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="white" boxShadow="xl" borderRadius="lg">
       <Text fontSize="2xl" mb={4}>Manage Your URLs</Text>
       <Input
         placeholder="Add new URL"
@@ -41,8 +41,8 @@ const Urls = () => {
         onChange={(e) => setNewUrl(e.target.value)}
         mb={2}
       />
-      <Button onClick={addUrl} colorScheme="blue">Add URL</Button>
-      <List spacing={3} mt={4}>
+      <Button onClick={addUrl} colorScheme="blue" width={['full', 'auto']} m={2}>Add URL</Button>
+      <List spacing={3} mt={4} border="1px" borderColor="gray.200" p={3}>
         {urls.map(url => (
           <ListItem key={url.id}>
             {url.url} <Button size="sm" colorScheme="red" onClick={() => deleteUrl(url.id)}>Delete</Button>

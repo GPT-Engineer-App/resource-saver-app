@@ -33,7 +33,7 @@ const Keys = () => {
   };
 
   return (
-    <Box p={4}>
+    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="white" boxShadow="xl" borderRadius="lg">
       <Text fontSize="2xl" mb={4}>Manage Your Keys</Text>
       <Input
         placeholder="Add new Key"
@@ -41,8 +41,8 @@ const Keys = () => {
         onChange={(e) => setNewKey(e.target.value)}
         mb={2}
       />
-      <Button onClick={addKey} colorScheme="blue">Add Key</Button>
-      <List spacing={3} mt={4}>
+      <Button onClick={addKey} colorScheme="blue" width={['full', 'auto']} m={2}>Add Key</Button>
+      <List spacing={3} mt={4} border="1px" borderColor="gray.200" p={3}>
         {keys.map(keyItem => (
           <ListItem key={keyItem.id}>
             {keyItem.key} <Button size="sm" colorScheme="red" onClick={() => deleteKey(keyItem.id)}>Delete</Button>
