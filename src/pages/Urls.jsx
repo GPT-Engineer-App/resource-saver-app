@@ -1,4 +1,4 @@
-import { Box, Button, Input, List, ListItem, Text } from "@chakra-ui/react";
+import { Box, Button, Input, Text, Grid, GridItem, Image } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { client } from "lib/crud";
 
@@ -56,13 +56,15 @@ const Urls = () => {
       />
       <Button onClick={addUrl} colorScheme="blue" width={['full', 'auto']} m={3} p={2}>Add URL</Button>
       {error && <Text color="red.500">{error}</Text>}
-      <List spacing={3} mt={4} border="1px" borderColor="gray.200" p={3} bg="gray.100">
+      <Grid templateColumns="repeat(3, 1fr)" gap={6} mt={4}>
         {urls.map(url => (
-          <ListItem key={url.id}>
-            {url.url} <Button size="sm" colorScheme="red" onClick={() => deleteUrl(url.id)}>Delete</Button>
-          </ListItem>
+          <GridItem key={url.id} bg="white" boxShadow="xl" p={4} borderRadius="lg">
+            <Image src="https://via.placeholder.com/150" alt="URL Image" mb={4} />
+            <Text fontSize="lg">{url.url}</Text>
+            <Button colorScheme="red" onClick={() => deleteUrl(url.id)}>Delete</Button>
+          </GridItem>
         ))}
-      </List>
+      </Grid>
     </Box>
   );
 };
