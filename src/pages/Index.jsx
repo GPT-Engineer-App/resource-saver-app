@@ -1,15 +1,36 @@
-// Complete the Index page component here
-// Use chakra-ui
-import { Button } from "@chakra-ui/react"; // example
-import { FaPlus } from "react-icons/fa"; // example - use react-icons/fa for icons
+import { Box, Button, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+
+const backgrounds = ["backgrounds/tech1.jpg", "backgrounds/tech2.jpg", "backgrounds/tech3.jpg"];
 
 const Index = () => {
-  // TODO: Create the website here!
+  const [background, setBackground] = useState("");
+
+  useEffect(() => {
+    const randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    setBackground(randomBackground);
+  }, []);
+
   return (
-    <Button>
-      Hello world! <FaPlus />
-    </Button>
-  ); // example
+    <Box height="100vh" bgImage={`url(${background})`} bgSize="cover" bgPosition="center">
+      <Flex direction="column" align="center" justify="center" height="100%">
+        <Heading as="h1" size="2xl" color="white" mb={6}>Personal Resource Manager</Heading>
+        <Text fontSize="xl" color="white" mb={4}>Store and manage your important resources</Text>
+        <Flex>
+          <Link as={RouterLink} to="/urls" style={{ textDecoration: 'none' }}>
+            <Button colorScheme="teal" m={2}>URLs</Button>
+          </Link>
+          <Link as={RouterLink} to="/keys" style={{ textDecoration: 'none' }}>
+            <Button colorScheme="teal" m={2}>Keys</Button>
+          </Link>
+          <Link as={RouterLink} to="/notes" style={{ textDecoration: 'none' }}>
+            <Button colorScheme="teal" m={2}>Notes</Button>
+          </Link>
+        </Flex>
+      </Flex>
+    </Box>
+  );
 };
 
 export default Index;
