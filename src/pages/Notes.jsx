@@ -18,7 +18,7 @@ const Notes = () => {
           setNotes([]);
         }
       } catch (err) {
-        setError("Failed to fetch notes.");
+        setError("Không thể lấy ghi chú");
       }
     };
     fetchNotes();
@@ -33,7 +33,7 @@ const Notes = () => {
         setNewNote("");
       }
     } catch (err) {
-      setError("Failed to add note.");
+      setError("Không thể thêm ghi chú");
     }
   };
 
@@ -44,15 +44,15 @@ const Notes = () => {
         setNotes(notes.filter(note => note.id !== id));
       }
     } catch (err) {
-      setError("Failed to delete note.");
+      setError("Không thể xóa ghi chú");
     }
   };
 
   return (
     <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="#f5f5dc" boxShadow="xl" borderRadius="lg" fontFamily="Georgia, serif">
-      <Text fontSize="2xl" mb={4} fontFamily="Times New Roman, serif">Manage Your Notes</Text>
+      <Text fontSize="2xl" mb={4} fontFamily="Times New Roman, serif">Quản lý ghi chú của bạn</Text>
       <Textarea
-        placeholder="Add new Note"
+        placeholder="Thêm ghi chú mới"
         value={newNote}
         onChange={(e) => setNewNote(e.target.value)}
         mb={2}
@@ -61,8 +61,8 @@ const Notes = () => {
         borderRadius="md"
         borderColor="green.200"
       />
-      <Button onClick={addNote} colorScheme="green" width={['full', 'auto']} m={2}>Add Note</Button>
-      {notes.length === 0 && <Text color="gray.500">No notes to display.</Text>}
+      <Button onClick={addNote} colorScheme="green" width={['full', 'auto']} m={2}>Thêm ghi chú</Button>
+      {notes.length === 0 && <Text color="gray.500">Không có ghi chú nào để hiển thị.</Text>}
       {error && <Text color="red.500">{error}</Text>}
       <Grid templateColumns="repeat(3, 1fr)" gap={6} mt={4}>
         {notes.map(note => (
@@ -75,7 +75,7 @@ const Notes = () => {
             <GridItem bg="white" boxShadow="xl" p={4} borderRadius="lg" border="1px solid #ccc">
               <Image src="https://via.placeholder.com/150" alt="Note Image" mb={4} />
               <Text fontSize="lg">{note.note}</Text>
-              <Button colorScheme="red" onClick={() => deleteNote(note.id)}>Delete</Button>
+              <Button colorScheme="red" onClick={() => deleteNote(note.id)}>Xóa</Button>
             </GridItem>
           </motion.div>
         ))}

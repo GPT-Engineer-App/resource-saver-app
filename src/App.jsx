@@ -8,19 +8,19 @@ function App() {
     <Router>
       <Flex as="nav" align="center" justify="space-between" wrap="wrap" padding="1rem" bg="brand.900" color="white" position="sticky" top="0" zIndex="1000">
         <Box p="2">
-          <Link as={RouterLink} to="/" _hover={{ textDecoration: 'none' }}>Home</Link>
+          <Link as={RouterLink} to="/" _hover={{ textDecoration: 'none' }}>Trang chủ</Link>
         </Box>
         <Box p="2">
-          <Link as={RouterLink} to="/urls" _hover={{ textDecoration: 'none' }}>URLs</Link>
+          <Link as={RouterLink} to="/urls" _hover={{ textDecoration: 'none' }}>URL</Link>
         </Box>
         <Box p="2">
-          <Link as={RouterLink} to="/keys" _hover={{ textDecoration: 'none' }}>Keys</Link>
+          <Link as={RouterLink} to="/keys" _hover={{ textDecoration: 'none' }}>Khóa</Link>
         </Box>
         <Box p="2">
-          <Link as={RouterLink} to="/notes" _hover={{ textDecoration: 'none' }}>Notes</Link>
+          <Link as={RouterLink} to="/notes" _hover={{ textDecoration: 'none' }}>Ghi chú</Link>
         </Box>
         <Box p="2">
-          <Link as={RouterLink} to="/admin" _hover={{ textDecoration: 'none' }}>Admin</Link>
+          <Link as={RouterLink} to="/admin" _hover={{ textDecoration: 'none' }}>Quản trị</Link>
         </Box>
       </Flex>
       <Routes>
