@@ -13,6 +13,8 @@ const Urls = () => {
         const data = await client.getWithPrefix("url:");
         if (data) {
           setUrls(data.map(item => ({ id: item.key, url: item.value.url })));
+        } else {
+          setUrls([]);
         }
       } catch (err) {
         setError("Failed to fetch URLs.");
@@ -55,6 +57,7 @@ const Urls = () => {
         mb={4} p={4} size="lg"
       />
       <Button onClick={addUrl} colorScheme="teal" width={['full', 'auto']} m={3} p={3} _hover={{ bg: "teal.600" }}>Add URL</Button>
+      {urls.length === 0 && <Text color="gray.500">No URLs to display.</Text>}
       {error && <Text color="red.500">{error}</Text>}
       <Grid templateColumns="repeat(3, 1fr)" gap={8} mt={4}>
         {urls.map(url => (

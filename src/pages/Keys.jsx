@@ -13,6 +13,8 @@ const Keys = () => {
         const data = await client.getWithPrefix("key:");
         if (data) {
           setKeys(data.map(item => ({ id: item.key, key: item.value.key })));
+        } else {
+          setKeys([]);
         }
       } catch (err) {
         setError("Failed to fetch keys.");
@@ -56,6 +58,7 @@ const Keys = () => {
         bg="gray.700" borderColor="gray.500" _hover={{ borderColor: "white" }} _focus={{ borderColor: "blue.300" }}
       />
     <Button onClick={addKey} colorScheme="red" width={['full', 'auto']} m={3} p={2} _hover={{ bg: "red.600" }} _active={{ bg: "red.800" }}>Add Key</Button>
+    {keys.length === 0 && <Text color="gray.500">No keys to display.</Text>}
       <Grid templateColumns="repeat(1, 1fr)" gap={2} mt={4} border="1px" borderColor="gray.600">
         {keys.map(keyItem => (
           <GridItem key={keyItem.id} bg="white" boxShadow="xl" p={4} borderRadius="lg">
