@@ -48,16 +48,16 @@ const Keys = () => {
   };
 
   return (
-    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="gray.800" color="white" fontFamily="Arial, sans-serif" boxShadow="xl" borderRadius="lg">
+    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="gray.100" color="black" fontFamily="Arial, sans-serif" boxShadow="xl" borderRadius="lg">
       <Text fontSize="2xl" mb={4}>Quản lý khóa của bạn</Text>
       <Input
         placeholder="Thêm khóa mới"
         value={newKey}
         onChange={(e) => setNewKey(e.target.value)}
         mb={4} p={2}
-        bg="gray.700" borderColor="gray.500" _hover={{ borderColor: "white" }} _focus={{ borderColor: "blue.300" }}
+        bg="white" borderColor="gray.500" _hover={{ borderColor: "gray.700" }} _focus={{ borderColor: "blue.300" }}
       />
-    <Button onClick={addKey} colorScheme="red" width={['full', 'auto']} m={3} p={2} _hover={{ bg: "red.600" }} _active={{ bg: "red.800" }}>Thêm khóa</Button>
+    <Button onClick={addKey} colorScheme="teal" width={['full', 'auto']} m={3} p={2} _hover={{ bg: "teal.600" }} _active={{ bg: "teal.800" }}>Thêm khóa</Button>
     {keys.length === 0 && <Text color="gray.500">Không có khóa nào để hiển thị</Text>}
       <Grid templateColumns="repeat(1, 1fr)" gap={2} mt={4} border="1px" borderColor="gray.600">
         {keys.map(keyItem => (

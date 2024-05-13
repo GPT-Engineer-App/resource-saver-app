@@ -48,15 +48,19 @@ const Urls = () => {
   };
 
   return (
-    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="lightblue" boxShadow="xl" borderRadius="lg">
+    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="gray.100" boxShadow="xl" borderRadius="lg">
       <Text fontSize="2xl" mb={4} fontFamily="Arial, sans-serif">Quản lý URL của bạn</Text>
       <Input
         placeholder="Thêm URL mới"
         value={newUrl}
         onChange={(e) => setNewUrl(e.target.value)}
         mb={4} p={4} size="lg"
+        bg="white"
+        borderColor="gray.500"
+        _hover={{ borderColor: "gray.700" }}
+        _focus={{ borderColor: "blue.300" }}
       />
-      <Button onClick={addUrl} colorScheme="teal" width={['full', 'auto']} m={3} p={3} _hover={{ bg: "teal.600" }}>Thêm URL</Button>
+      <Button onClick={addUrl} colorScheme="teal" width={['full', 'auto']} m={3} p={3} _hover={{ bg: "teal.600" }} _active={{ bg: "teal.800" }}>Thêm URL</Button>
       {urls.length === 0 && <Text color="gray.500">Không có URL nào để hiển thị.</Text>}
       {error && <Text color="red.500">{error}</Text>}
       <Grid templateColumns="repeat(3, 1fr)" gap={8} mt={4}>
