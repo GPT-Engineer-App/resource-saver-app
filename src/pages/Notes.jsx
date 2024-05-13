@@ -14,6 +14,8 @@ const Notes = () => {
         const data = await client.getWithPrefix("note:");
         if (data) {
           setNotes(data.map(item => ({ id: item.key, note: item.value.note })));
+        } else {
+          setNotes([]);
         }
       } catch (err) {
         setError("Failed to fetch notes.");
@@ -60,6 +62,7 @@ const Notes = () => {
         borderColor="green.200"
       />
       <Button onClick={addNote} colorScheme="green" width={['full', 'auto']} m={2}>Add Note</Button>
+      {notes.length === 0 && <Text color="gray.500">No notes to display.</Text>}
       {error && <Text color="red.500">{error}</Text>}
       <Grid templateColumns="repeat(3, 1fr)" gap={6} mt={4}>
         {notes.map(note => (
