@@ -46,22 +46,22 @@ const Urls = () => {
   };
 
   return (
-    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="white" boxShadow="xl" borderRadius="lg">
-      <Text fontSize="2xl" mb={4}>Manage Your URLs</Text>
+    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="lightblue" boxShadow="xl" borderRadius="lg">
+      <Text fontSize="2xl" mb={4} fontFamily="Arial, sans-serif">Manage Your URLs</Text>
       <Input
         placeholder="Add new URL"
         value={newUrl}
         onChange={(e) => setNewUrl(e.target.value)}
-        mb={4} p={2}
+        mb={4} p={4} size="lg"
       />
-      <Button onClick={addUrl} colorScheme="blue" width={['full', 'auto']} m={3} p={2}>Add URL</Button>
+      <Button onClick={addUrl} colorScheme="teal" width={['full', 'auto']} m={3} p={3} _hover={{ bg: "teal.600" }}>Add URL</Button>
       {error && <Text color="red.500">{error}</Text>}
-      <Grid templateColumns="repeat(3, 1fr)" gap={6} mt={4}>
+      <Grid templateColumns="repeat(3, 1fr)" gap={8} mt={4}>
         {urls.map(url => (
-          <GridItem key={url.id} bg="white" boxShadow="xl" p={4} borderRadius="lg">
+          <GridItem key={url.id} bg="white" boxShadow="2xl" p={5} borderRadius="lg">
             <Image src="https://via.placeholder.com/150" alt="URL Image" mb={4} />
             <Text fontSize="lg">{url.url}</Text>
-            <Button colorScheme="red" onClick={() => deleteUrl(url.id)}>Delete</Button>
+            <Button colorScheme="red" onClick={() => deleteUrl(url.id)} _hover={{ bg: "red.600" }}>Delete</Button>
           </GridItem>
         ))}
       </Grid>

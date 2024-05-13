@@ -1,4 +1,5 @@
 import { Route, BrowserRouter as Router, Routes, Link as RouterLink } from "react-router-dom";
+import Admin from "./pages/Admin.jsx";
 import { Box, Flex, Link } from "@chakra-ui/react";
 import Index from "./pages/Index.jsx";
 
@@ -18,9 +19,13 @@ function App() {
         <Box p="2">
           <Link as={RouterLink} to="/notes" _hover={{ textDecoration: 'none' }}>Notes</Link>
         </Box>
+        <Box p="2">
+          <Link as={RouterLink} to="/admin" _hover={{ textDecoration: 'none' }}>Admin</Link>
+        </Box>
       </Flex>
       <Routes>
         <Route exact path="/" element={<Index />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
   );
