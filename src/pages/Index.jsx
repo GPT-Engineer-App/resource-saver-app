@@ -15,17 +15,17 @@ const Index = () => {
   return (
     <Box height="100vh" bgImage={`url(${background})`} bgSize="cover" bgPosition="center">
       <Flex direction="column" align="center" justify="center" height="100%">
-        <Heading as="h1" size="2xl" color="white" mb={6}>Personal Resource Manager</Heading>
-        <Text fontSize="xl" color="white" mb={4}>Store and manage your important resources</Text>
+        <Heading as="h1" size="2xl" color="white" mb={6}>Trình quản lý tài nguyên cá nhân</Heading>
+        <Text fontSize="xl" color="white" mb={4}>Lưu trữ và quản lý các tài nguyên quan trọng của bạn</Text>
         <Flex>
           <Link as={RouterLink} to="/urls" style={{ textDecoration: 'none' }}>
-            <Button colorScheme="teal" m={2}>URLs</Button>
+            <Button colorScheme="teal" m={2}>URL</Button>
           </Link>
           <Link as={RouterLink} to="/keys" style={{ textDecoration: 'none' }}>
-            <Button colorScheme="teal" m={2}>Keys</Button>
+            <Button colorScheme="teal" m={2}>Khóa</Button>
           </Link>
           <Link as={RouterLink} to="/notes" style={{ textDecoration: 'none' }}>
-            <Button colorScheme="teal" m={2}>Notes</Button>
+            <Button colorScheme="teal" m={2}>Ghi chú</Button>
           </Link>
         </Flex>
       </Flex>

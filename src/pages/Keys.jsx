@@ -17,7 +17,7 @@ const Keys = () => {
           setKeys([]);
         }
       } catch (err) {
-        setError("Failed to fetch keys.");
+        setError("Không thể lấy khóa");
       }
     };
     fetchKeys();
@@ -32,7 +32,7 @@ const Keys = () => {
         setNewKey("");
       }
     } catch (err) {
-      setError("Failed to add key.");
+      setError("Không thể thêm khóa");
     }
   };
 
@@ -43,28 +43,28 @@ const Keys = () => {
         setKeys(keys.filter(keyItem => keyItem.id !== id));
       }
     } catch (err) {
-      setError("Failed to delete key.");
+      setError("Không thể xóa khóa");
     }
   };
 
   return (
     <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="gray.800" color="white" fontFamily="Arial, sans-serif" boxShadow="xl" borderRadius="lg">
-      <Text fontSize="2xl" mb={4}>Manage Your Keys</Text>
+      <Text fontSize="2xl" mb={4}>Quản lý khóa của bạn</Text>
       <Input
-        placeholder="Add new Key"
+        placeholder="Thêm khóa mới"
         value={newKey}
         onChange={(e) => setNewKey(e.target.value)}
         mb={4} p={2}
         bg="gray.700" borderColor="gray.500" _hover={{ borderColor: "white" }} _focus={{ borderColor: "blue.300" }}
       />
-    <Button onClick={addKey} colorScheme="red" width={['full', 'auto']} m={3} p={2} _hover={{ bg: "red.600" }} _active={{ bg: "red.800" }}>Add Key</Button>
-    {keys.length === 0 && <Text color="gray.500">No keys to display.</Text>}
+    <Button onClick={addKey} colorScheme="red" width={['full', 'auto']} m={3} p={2} _hover={{ bg: "red.600" }} _active={{ bg: "red.800" }}>Thêm khóa</Button>
+    {keys.length === 0 && <Text color="gray.500">Không có khóa nào để hiển thị</Text>}
       <Grid templateColumns="repeat(1, 1fr)" gap={2} mt={4} border="1px" borderColor="gray.600">
         {keys.map(keyItem => (
           <GridItem key={keyItem.id} bg="white" boxShadow="xl" p={4} borderRadius="lg">
             <Image src="https://via.placeholder.com/150" alt="Key Image" mb={4} />
             <Text fontSize="lg">{keyItem.key}</Text>
-            <Button colorScheme="red" onClick={() => deleteKey(keyItem.id)} _hover={{ bg: "red.600" }} _active={{ bg: "red.800" }}>Delete</Button>
+            <Button colorScheme="red" onClick={() => deleteKey(keyItem.id)} _hover={{ bg: "red.600" }} _active={{ bg: "red.800" }}>Xóa</Button>
           </GridItem>
         ))}
       </Grid>
