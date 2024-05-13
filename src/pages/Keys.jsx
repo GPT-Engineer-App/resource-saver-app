@@ -46,21 +46,22 @@ const Keys = () => {
   };
 
   return (
-    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="white" boxShadow="xl" borderRadius="lg">
+    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="gray.800" color="white" fontFamily="Arial, sans-serif" boxShadow="xl" borderRadius="lg">
       <Text fontSize="2xl" mb={4}>Manage Your Keys</Text>
       <Input
         placeholder="Add new Key"
         value={newKey}
         onChange={(e) => setNewKey(e.target.value)}
         mb={4} p={2}
+        bg="gray.700" borderColor="gray.500" _hover={{ borderColor: "white" }} _focus={{ borderColor: "blue.300" }}
       />
-      <Button onClick={addKey} colorScheme="blue" width={['full', 'auto']} m={3} p={2}>Add Key</Button>
-      <Grid templateColumns="repeat(3, 1fr)" gap={6} mt={4}>
+    <Button onClick={addKey} colorScheme="red" width={['full', 'auto']} m={3} p={2} _hover={{ bg: "red.600" }} _active={{ bg: "red.800" }}>Add Key</Button>
+      <Grid templateColumns="repeat(1, 1fr)" gap={2} mt={4} border="1px" borderColor="gray.600">
         {keys.map(keyItem => (
           <GridItem key={keyItem.id} bg="white" boxShadow="xl" p={4} borderRadius="lg">
             <Image src="https://via.placeholder.com/150" alt="Key Image" mb={4} />
             <Text fontSize="lg">{keyItem.key}</Text>
-            <Button colorScheme="red" onClick={() => deleteKey(keyItem.id)}>Delete</Button>
+            <Button colorScheme="red" onClick={() => deleteKey(keyItem.id)} _hover={{ bg: "red.600" }} _active={{ bg: "red.800" }}>Delete</Button>
           </GridItem>
         ))}
       </Grid>
