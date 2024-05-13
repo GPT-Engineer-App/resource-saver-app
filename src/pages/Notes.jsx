@@ -49,7 +49,7 @@ const Notes = () => {
   };
 
   return (
-    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="#f5f5dc" boxShadow="xl" borderRadius="lg" fontFamily="Georgia, serif">
+    <Box p={[3, 4, 5]} m={[2, 3, 4]} bg="gray.100" boxShadow="xl" borderRadius="lg" fontFamily="Georgia, serif">
       <Text fontSize="2xl" mb={4} fontFamily="Times New Roman, serif">Quản lý ghi chú của bạn</Text>
       <Textarea
         placeholder="Thêm ghi chú mới"
@@ -58,10 +58,13 @@ const Notes = () => {
         mb={2}
         p={2}
         m={2}
+        bg="white"
         borderRadius="md"
-        borderColor="green.200"
+        borderColor="gray.500"
+        _hover={{ borderColor: "gray.700" }}
+        _focus={{ borderColor: "blue.300" }}
       />
-      <Button onClick={addNote} colorScheme="green" width={['full', 'auto']} m={2}>Thêm ghi chú</Button>
+      <Button onClick={addNote} colorScheme="teal" width={['full', 'auto']} m={2} _hover={{ bg: "teal.600" }} _active={{ bg: "teal.800" }}>Thêm ghi chú</Button>
       {notes.length === 0 && <Text color="gray.500">Không có ghi chú nào để hiển thị.</Text>}
       {error && <Text color="red.500">{error}</Text>}
       <Grid templateColumns="repeat(3, 1fr)" gap={6} mt={4}>
@@ -75,7 +78,7 @@ const Notes = () => {
             <GridItem bg="white" boxShadow="xl" p={4} borderRadius="lg" border="1px solid #ccc">
               <Image src="https://via.placeholder.com/150" alt="Note Image" mb={4} />
               <Text fontSize="lg">{note.note}</Text>
-              <Button colorScheme="red" onClick={() => deleteNote(note.id)}>Xóa</Button>
+              <Button colorScheme="red" onClick={() => deleteNote(note.id)} _hover={{ bg: "red.600" }} _active={{ bg: "red.800" }}>Xóa</Button>
             </GridItem>
           </motion.div>
         ))}
